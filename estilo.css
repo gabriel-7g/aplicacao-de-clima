@@ -5,3 +5,25 @@ body {
 h2, h3 {
   font-family: 'Carter One', cursive;
 }
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(180deg, rgba(89,76,238) 0%, #8dd0f5 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.hide{
+  display: none;
+}
+
+.container {
+  background-color: #5c54ed;
+  box-shadow: rgba(0, 0, 0, .24) 0px 3px 8px;
+}
