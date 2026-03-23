@@ -6,6 +6,7 @@ const cityKey = "mMX2jf7YTHH0ufeLyBhKLQJxeG9vIq0gtDd2yuNWuxY"
 const cityInput = document.querySelector("#city-input")
 const searchBtn = document.querySelector("#search")
 const bgImage = document.querySelector("#bg-image")
+const errorMessageContainer = document.querySelector("#error-message");
 
 const cityElement = document.querySelector("#city")
 const tempElement = document.querySelector("#temperature span")
@@ -35,8 +36,19 @@ const getCityPhoto = async(city) =>{
     return data.results[0].urls.regular
 }
 
+const hideInformation = () => {
+    errorMessageContainer.classList.add("hide");
+    weatherContainer.classList.add("hide");
+};
+
 const showWeatherData = async (city) => {
+    hideInformation();
+
     const data = await getWeatherData(city)
+    if (data.cod === "404") {
+        errorMessageContainer.classList.remove("hide");
+        return;
+    }
     const photoUrl = await getCityPhoto(city);
 
     cityElement.innerText = data.name;
